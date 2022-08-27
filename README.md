@@ -1,4 +1,4 @@
-# Pokédex
+# Kanto Pokédex
 
 ![screenshot](https://user-images.githubusercontent.com/104530403/187049503-d21f93c7-1c26-4680-86d1-e331d1a83a14.png)
 
