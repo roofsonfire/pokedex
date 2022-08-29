@@ -121,3 +121,48 @@ function handleDataButtons(position) {
     nameTitle.innerHTML = ``;
   }
 }
+
+function handleHelpButton() {
+  if (helpMode) {
+    document.body.style.filter = "grayscale(0)";
+    helpMode = false;
+    nameTitle.innerHTML = ``;
+  } else {
+    document.body.style.filter = "grayscale(0.5)";
+    helpMode = true;
+    nameTitle.innerHTML = `<p>Hover over buttons for help</p>`;
+  }
+}
+
+function handleRefreshButton() {
+  if (helpMode) {
+    return;
+  } else {
+    synth.triggerAttackRelease("A2", "60n", "+0.01");
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+    nameTitle.innerHTML = `<p>Reseting Pokédex</p>`;
+    setInterval(() => {
+      nameTitle.innerHTML += `.`;
+    }, 500);
+  }
+}
+
+function handleDataButton(target) {
+  synth.triggerAttackRelease("C4", "500n", "+0.01");
+  console.log(target.classList.contains("dataButtonOne"));
+  // if (target.classList.contains("data-button")) {
+  //   handleDataButtons(target.dataset.position);
+  // }
+}
+// synth.triggerAttackRelease("C4", "500n", "+0.01");
+// dataButtons.forEach((button) => {
+//   button.classList.remove("pressed");
+// });
+// dataButtonOne.classList.add("pressed");
+// if (data) {
+//   handleDataButtons(position);
+// } else {
+//   searchForPokemonFirst();
+// }
