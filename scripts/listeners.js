@@ -8,6 +8,10 @@ window.onload = () => {
       } else {
         if (event.target.matches(".searchButton")) {
           handleSearchButton();
+        } else if (event.target.matches(".randomButton")) {
+          handleRandom();
+        } else if (event.target.matches(".muteButton")) {
+          handleMuteButton();
         } else if (event.target.matches(".refreshButton")) {
           handleRefreshButton();
         } else if (event.target.matches(".forwardButton")) {
@@ -20,16 +24,12 @@ window.onload = () => {
           handleDownButton();
         } else if (event.target.matches(".cryButton")) {
           handleCryButton();
-        } else if (event.target.matches(".randomButton")) {
-          handleRandom();
-        } else if (event.target.matches(".muteButton")) {
-          handleMuteButton();
         } else if (event.target.matches(".secondaryLeftArrow")) {
           handleSecondaryLeftArrow();
         } else if (event.target.matches(".secondaryRightArrow")) {
           handleSecondaryRightArrow();
         } else if (event.target.matches(".btns_celestes")) {
-          handleDataButton(event.target);
+          handleDataButton(event);
         }
       }
     }

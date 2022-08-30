@@ -107,6 +107,7 @@ async function handleMuteButton() {
 }
 
 function handleDataButtons(position) {
+  console.log(position);
   if (position === 0) {
     changeName(pokeName);
   } else if (position > 0 && position < statsTitles.length) {
@@ -149,20 +150,40 @@ function handleRefreshButton() {
   }
 }
 
-function handleDataButton(target) {
+function handleDataButton(event) {
   synth.triggerAttackRelease("C4", "500n", "+0.01");
-  console.log(target.classList.contains("dataButtonOne"));
-  // if (target.classList.contains("data-button")) {
-  //   handleDataButtons(target.dataset.position);
-  // }
+  dataButtons.forEach((button) => {
+    button.classList.remove("pressed");
+  });
+  if (event.target.classList.contains("dataButtonOne")) {
+    dataButtonOne.classList.add("pressed");
+    handleDataButtons(0);
+  } else if (event.target.classList.contains("dataButtonTwo")) {
+    dataButtonTwo.classList.add("pressed");
+    handleDataButtons(1);
+  } else if (event.target.classList.contains("dataButtonThree")) {
+    dataButtonThree.classList.add("pressed");
+    handleDataButtons(2);
+  } else if (event.target.classList.contains("dataButtonFour")) {
+    dataButtonFour.classList.add("pressed");
+    handleDataButtons(3);
+  } else if (event.target.classList.contains("dataButtonFive")) {
+    dataButtonFive.classList.add("pressed");
+    handleDataButtons(4);
+  } else if (event.target.classList.contains("dataButtonSix")) {
+    dataButtonSix.classList.add("pressed");
+    handleDataButtons(5);
+  } else if (event.target.classList.contains("dataButtonSeven")) {
+    dataButtonSeven.classList.add("pressed");
+    handleDataButtons(6);
+  } else if (event.target.classList.contains("dataButtonEight")) {
+    dataButtonEight.classList.add("pressed");
+    handleDataButtons(7);
+  } else if (event.target.classList.contains("dataButtonNine")) {
+    dataButtonNine.classList.add("pressed");
+    handleDataButtons(8);
+  } else if (event.target.classList.contains("dataButtonTen")) {
+    dataButtonTen.classList.add("pressed");
+    nameTitle.innerHTML = `<p>Pokédex by<br><br>@juanmanueldaza<br>@opablon<br>@l0urencocarlos</p>`;
+  }
 }
-// synth.triggerAttackRelease("C4", "500n", "+0.01");
-// dataButtons.forEach((button) => {
-//   button.classList.remove("pressed");
-// });
-// dataButtonOne.classList.add("pressed");
-// if (data) {
-//   handleDataButtons(position);
-// } else {
-//   searchForPokemonFirst();
-// }
