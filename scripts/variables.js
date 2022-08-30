@@ -66,3 +66,28 @@ const volume = new Tone.Volume(0).toDestination();
 const synth = new Tone.DuoSynth().connect(volume);
 
 let helpMode = false;
+
+const buttons = [
+  ".helpButton",
+  ".muteButton",
+  ".refreshButton",
+  ".searchButton",
+  ".randomButton",
+  ".forwardButton",
+  ".backwardButton",
+  ".upButton",
+  ".downButton",
+  ".cryButton",
+  ".secondaryLeftArrow",
+  ".secondaryRightArrow",
+  ".dataButtonOne",
+  ".dataButtonTwo",
+  ".dataButtonThree",
+  ".dataButtonFour",
+  ".dataButtonFive",
+  ".dataButtonSix",
+  ".dataButtonSeven",
+  ".dataButtonEight",
+  ".dataButtonNine",
+  ".dataButtonTen",
+];

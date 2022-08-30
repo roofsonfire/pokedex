@@ -1,40 +1,132 @@
 window.onload = () => {
   window.onpointerdown = (event) => {
-    if (event.target.matches(".helpButton")) {
-      handleHelpButton();
-    } else {
+    try {
+      if (event.target.matches(".helpButton")) {
+        help();
+        return;
+      }
       if (helpMode) {
         return;
-      } else {
-        if (event.target.matches(".searchButton")) {
-          handleSearchButton();
-        } else if (event.target.matches(".randomButton")) {
-          handleRandom();
-        } else if (event.target.matches(".muteButton")) {
-          handleMuteButton();
-        } else if (event.target.matches(".refreshButton")) {
-          handleRefreshButton();
-        } else if (event.target.matches(".forwardButton")) {
-          handleForwardButton();
-        } else if (event.target.matches(".backwardButton")) {
-          handleBackwardButton();
-        } else if (event.target.matches(".upButton")) {
-          handleUpButton();
-        } else if (event.target.matches(".downButton")) {
-          handleDownButton();
-        } else if (event.target.matches(".cryButton")) {
-          handleCryButton();
-        } else if (event.target.matches(".secondaryLeftArrow")) {
-          handleSecondaryLeftArrow();
-        } else if (event.target.matches(".secondaryRightArrow")) {
-          handleSecondaryRightArrow();
-        } else if (event.target.matches(".btns_celestes")) {
-          handleDataButton(event);
-        }
       }
+      buttons.map((button) => {
+        if (!event.target.matches(button)) {
+          return;
+        }
+        if (event.target.matches(buttons[0])) {
+          help();
+          return;
+        }
+        if (event.target.matches(buttons[1])) {
+          mute();
+          return;
+        }
+        if (event.target.matches(buttons[2])) {
+          refresh();
+          return;
+        }
+        if (event.target.matches(buttons[3])) {
+          search();
+          return;
+        }
+        if (event.target.matches(buttons[4])) {
+          random();
+          return;
+        }
+        if (event.target.matches(buttons[5])) {
+          forward();
+          return;
+        }
+        if (event.target.matches(buttons[6])) {
+          backward();
+          return;
+        }
+        if (event.target.matches(buttons[7])) {
+          up();
+          return;
+        }
+        if (event.target.matches(buttons[8])) {
+          down();
+          return;
+        }
+        if (event.target.matches(buttons[9])) {
+          cry();
+          return;
+        }
+        if (event.target.matches(buttons[10])) {
+          secondaryLeft();
+          return;
+        }
+        if (event.target.matches(buttons[11])) {
+          secondaryRight();
+          return;
+        }
+        if (event.target.matches(buttons[12])) {
+          dataB(event);
+          return;
+        }
+      });
+      //   if (!event.target.matches(button)) {
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[0])) {
+      //     help();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[1])) {
+      //     mute();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[2])) {
+      //     refresh();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[3])) {
+      //     search();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[4])) {
+      //     random();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[5])) {
+      //     forward();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[6])) {
+      //     backward();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[7])) {
+      //     up();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[8])) {
+      //     down();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[9])) {
+      //     cry();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[10])) {
+      //     secondaryLeft();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[11])) {
+      //     secondaryRight();
+      //     return;
+      //   }
+      //   if (event.target.matches(buttons[12])) {
+      //     dataB(event);
+      //     return;
+      //   }
+      // });
+    } catch (error) {
+      throw error;
     }
   };
 };
+
 // window.onload = async () => {
 //   searchButton.onmouseover = (e) => {
 //     if (helpMode) {

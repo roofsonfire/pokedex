@@ -1,4 +1,4 @@
-async function handleSearchButton() {
+async function search() {
   hidePokemonImageForLoadingAnimation();
   showGifLoadingAnimation();
   spritePosition = 0;
@@ -10,7 +10,7 @@ async function handleSearchButton() {
   setTimeout(() => showPokemonImageForLoadingAnimation(), 2110);
 }
 
-async function handleRandom() {
+async function random() {
   hidePokemonImageForLoadingAnimation();
   showGifLoadingAnimation();
   spritePosition = 0;
@@ -20,7 +20,7 @@ async function handleRandom() {
   setTimeout(() => showPokemonImageForLoadingAnimation(), 2110);
 }
 
-async function handleForwardButton() {
+async function forward() {
   if (!pokeId) {
     pokeId = 0;
   }
@@ -31,10 +31,10 @@ async function handleForwardButton() {
   }
   input.value = pokeId;
 
-  handleSearchButton();
+  search();
 }
 
-async function handleBackwardButton() {
+async function backward() {
   if (!pokeId) {
     pokeId = 898;
   }
@@ -44,10 +44,10 @@ async function handleBackwardButton() {
     pokeId = 898;
   }
   input.value = pokeId;
-  handleSearchButton();
+  search();
 }
 
-function handleUpButton() {
+function up() {
   spritePosition -= 1;
   if (spritePosition < 0) {
     spritePosition = spriteAmount - 1;
@@ -55,7 +55,7 @@ function handleUpButton() {
   displayPokemon();
 }
 
-function handleDownButton() {
+function down() {
   spritePosition += 1;
   if (spritePosition > spriteAmount - 1) {
     spritePosition = 0;
@@ -63,12 +63,12 @@ function handleDownButton() {
   displayPokemon();
 }
 
-function handleCryButton() {
+function cry() {
   playPokemonCry();
   speaker.classList.add("shake");
 }
 
-function handleSecondaryLeftArrow() {
+function secondaryLeft() {
   statsPosition -= 1;
   if (statsPosition < 0) {
     statsPosition = pokemonStats.length - 1;
@@ -82,7 +82,7 @@ function handleSecondaryLeftArrow() {
   }
 }
 
-function handleSecondaryRightArrow() {
+function secondaryRight() {
   statsPosition += 1;
   if (statsPosition > pokemonStats.length - 1) {
     statsPosition = 0;
@@ -94,7 +94,7 @@ function handleSecondaryRightArrow() {
   }
 }
 
-async function handleMuteButton() {
+async function mute() {
   if (!volume.mute) {
     soundIcon.classList.remove("hidden");
     muteIcon.classList.add("hidden");
@@ -106,7 +106,33 @@ async function handleMuteButton() {
   }
 }
 
-function handleDataButtons(position) {
+function help() {
+  if (helpMode) {
+    document.body.style.filter = "grayscale(0)";
+    helpMode = false;
+    nameTitle.innerHTML = ``;
+  } else {
+    document.body.style.filter = "grayscale(0.5)";
+    helpMode = true;
+    nameTitle.innerHTML = `<p>Hover over buttons for help</p>`;
+  }
+}
+
+function refresh() {
+  if (helpMode) {
+    return;
+  } else {
+    synth.triggerAttackRelease("A2", "60n", "+0.01");
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+    nameTitle.innerHTML = `<p>Reseting Pokédex</p>`;
+    setInterval(() => {
+      nameTitle.innerHTML += `.`;
+    }, 500);
+  }
+}
+function datas(position) {
   console.log(position);
   if (position === 0) {
     changeName(pokeName);
@@ -122,66 +148,38 @@ function handleDataButtons(position) {
     nameTitle.innerHTML = ``;
   }
 }
-
-function handleHelpButton() {
-  if (helpMode) {
-    document.body.style.filter = "grayscale(0)";
-    helpMode = false;
-    nameTitle.innerHTML = ``;
-  } else {
-    document.body.style.filter = "grayscale(0.5)";
-    helpMode = true;
-    nameTitle.innerHTML = `<p>Hover over buttons for help</p>`;
-  }
-}
-
-function handleRefreshButton() {
-  if (helpMode) {
-    return;
-  } else {
-    synth.triggerAttackRelease("A2", "60n", "+0.01");
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
-    nameTitle.innerHTML = `<p>Reseting Pokédex</p>`;
-    setInterval(() => {
-      nameTitle.innerHTML += `.`;
-    }, 500);
-  }
-}
-
-function handleDataButton(event) {
+function dataB(event) {
   synth.triggerAttackRelease("C4", "500n", "+0.01");
   dataButtons.forEach((button) => {
     button.classList.remove("pressed");
   });
   if (event.target.classList.contains("dataButtonOne")) {
     dataButtonOne.classList.add("pressed");
-    handleDataButtons(0);
+    datas(0);
   } else if (event.target.classList.contains("dataButtonTwo")) {
     dataButtonTwo.classList.add("pressed");
-    handleDataButtons(1);
+    datas(1);
   } else if (event.target.classList.contains("dataButtonThree")) {
     dataButtonThree.classList.add("pressed");
-    handleDataButtons(2);
+    datas(2);
   } else if (event.target.classList.contains("dataButtonFour")) {
     dataButtonFour.classList.add("pressed");
-    handleDataButtons(3);
+    datas(3);
   } else if (event.target.classList.contains("dataButtonFive")) {
     dataButtonFive.classList.add("pressed");
-    handleDataButtons(4);
+    datas(4);
   } else if (event.target.classList.contains("dataButtonSix")) {
     dataButtonSix.classList.add("pressed");
-    handleDataButtons(5);
+    datas(5);
   } else if (event.target.classList.contains("dataButtonSeven")) {
     dataButtonSeven.classList.add("pressed");
-    handleDataButtons(6);
+    datas(6);
   } else if (event.target.classList.contains("dataButtonEight")) {
     dataButtonEight.classList.add("pressed");
-    handleDataButtons(7);
+    datas(7);
   } else if (event.target.classList.contains("dataButtonNine")) {
     dataButtonNine.classList.add("pressed");
-    handleDataButtons(8);
+    datas(8);
   } else if (event.target.classList.contains("dataButtonTen")) {
     dataButtonTen.classList.add("pressed");
     nameTitle.innerHTML = `<p>Pokédex by<br><br>@juanmanueldaza<br>@opablon<br>@l0urencocarlos</p>`;
