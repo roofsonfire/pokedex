@@ -1,4 +1,30 @@
-<script></script>
+<script>
+export default {
+  name: "Screens",
+  props: {
+    input: {
+      type: String,
+      default: "",
+    },
+    name: {
+      type: String,
+      default: "",
+    },
+    gender: {
+      type: String,
+      default: "",
+    },
+    types: {
+      type: Array,
+      default: () => [],
+    },
+    image: {
+      type: String,
+      default: "",
+    },
+  },
+};
+</script>
 
 <template>
   <g id="screens">
@@ -11,12 +37,7 @@
     />
     <foreignObject x="140" y="595" height="60" width="175">
       <div class="inputContainer">
-        <input
-          id="input"
-          type="text"
-          placeholder="pokémon"
-          autocomplete="off"
-        />
+        <input id="input" type="text" autocomplete="off" v-model="input" />
       </div>
     </foreignObject>
     <path
@@ -28,7 +49,9 @@
     />
     <foreignObject x="640" y="230" width="365" height="150">
       <div id="pokeNameContainer">
-        <h2 id="pokeName"></h2>
+        <h2 id="pokeName">
+          {{ name }}
+        </h2>
       </div>
     </foreignObject>
     <path
@@ -40,7 +63,9 @@
     />
     <foreignObject x="663" y="621" width="125" height="40">
       <div id="pokeGenderContainer">
-        <h3 id="pokeGender"></h3>
+        <h3 id="pokeGender">
+          {{ gender }}
+        </h3>
       </div>
     </foreignObject>
     <path
@@ -52,7 +77,9 @@
     />
     <foreignObject x="861" y="621" width="125" height="40">
       <div id="pokeTypesContainer">
-        <h3 id="pokeTypes"></h3>
+        <h3 id="pokeTypes">
+          {{ types }}
+        </h3>
       </div>
     </foreignObject>
     <path
@@ -71,7 +98,7 @@
       />
     </foreignObject>
     <foreignObject x="170" y="255" width="200" height="200">
-      <img id="pokeImg" src="" alt="" />
+      <img id="pokeImg" :src="image" alt="" />
     </foreignObject>
   </g>
 </template>

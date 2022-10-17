@@ -1,4 +1,7 @@
 <script>
+import { defineComponent } from "vue";
+import Axios from "axios";
+
 import Screens from "./sub/Screens.vue";
 import Glows from "./sub/Glows.vue";
 import NoName1 from "./sub/noName/NoName1.vue";
@@ -26,8 +29,17 @@ import LedRedMain from "./sub/LedRedMain.vue";
 import BtnsCelestes from "./sub/BtnsCelestes.vue";
 import NoName7 from "./sub/noName/NoName7.vue";
 
-export default {
+export default defineComponent({
   name: "Pokedex",
+  data() {
+    return {
+      input: null,
+      name: null,
+      gender: null,
+      types: [],
+      image: null,
+    };
+  },
   components: {
     Screens,
     Glows,
@@ -56,7 +68,47 @@ export default {
     BtnsCelestes,
     NoName7,
   },
-};
+  methods: {
+    random() {
+      this.search(Math.floor(Math.random() * 898) + 1);
+    },
+    search(random) {
+      if (!random) {
+        this.input = input.value;
+      } else {
+        this.input = random;
+      }
+      console.log(this.input);
+      Axios.get(`https://pokeapi.co/api/v2/pokemon/${this.input}`).then(
+        response => {
+          this.display(response.data);
+        }
+      );
+    },
+    display(data) {
+      console.log(data);
+      this.changeImgSrc(data.sprites.front_default);
+      this.changeName(data.name);
+      this.changeGender("female");
+      this.changeTypes(data.types);
+    },
+    changeImgSrc(src) {
+      this.image = src;
+    },
+    changeName(name) {
+      this.name = name;
+      console.log(this.name);
+    },
+    changeGender(gender) {
+      this.gender = gender;
+      console.log(this.gender);
+    },
+    changeTypes(types) {
+      this.types = types;
+      console.log(this.types);
+    },
+  },
+});
 </script>
 
 <template>
@@ -68,13 +120,20 @@ export default {
     xmlns="http://www.w3.org/2000/svg"
   >
     <g id="Pokedex">
-      <Screens />
+      <Screens
+        :input="input"
+        :name="name"
+        :gender="gender"
+        :types="types"
+        :image="image"
+        @keyup.enter="search()"
+      />
       <Glows />
       <NoName1 />
       <Group />
       <NoName2 />
       <Speaker />
-      <MainBigLed />
+      <MainBigLed @click="random()" />
       <NoName3 />
       <DPad />
       <NoName4 />
@@ -84,7 +143,7 @@ export default {
       <SecondaryRightArrow />
       <PrimaryScreenRedButton />
       <MainLightBlueButton />
-      <PrimaryScreenUnderLeftButton />
+      <PrimaryScreenUnderLeftButton @click="search()" />
       <PrimaryScreenUnderRightButton />
       <NoName6 />
       <LedGreenInput />

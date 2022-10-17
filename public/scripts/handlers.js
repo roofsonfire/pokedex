@@ -1,24 +1,24 @@
-async function handleSearchButton() {
-  hidePokemonImageForLoadingAnimation();
-  showGifLoadingAnimation();
-  spritePosition = 0;
-  pokeTypes.classList.remove(poketypeOne);
-  pokeTypes.classList.remove(poketypeTwo);
-  data = await getPokemon(input.value.toLowerCase());
-  setTimeout(() => displayPokemon(), 2110);
-  setTimeout(() => hideGifLoadingAnimation(), 2110);
-  setTimeout(() => showPokemonImageForLoadingAnimation(), 2110);
-}
+// async function handleSearchButton() {
+//   hidePokemonImageForLoadingAnimation();
+//   showGifLoadingAnimation();
+//   spritePosition = 0;
+//   pokeTypes.classList.remove(poketypeOne);
+//   pokeTypes.classList.remove(poketypeTwo);
+//   data = await getPokemon(input.value.toLowerCase());
+//   setTimeout(() => displayPokemon(), 2110);
+//   setTimeout(() => hideGifLoadingAnimation(), 2110);
+//   setTimeout(() => showPokemonImageForLoadingAnimation(), 2110);
+// }
 
-async function handleRandom() {
-  hidePokemonImageForLoadingAnimation();
-  showGifLoadingAnimation();
-  spritePosition = 0;
-  data = await getPokemon(randomIntFromInterval());
-  setTimeout(() => displayPokemon(), 2110);
-  setTimeout(() => hideGifLoadingAnimation(), 2110);
-  setTimeout(() => showPokemonImageForLoadingAnimation(), 2110);
-}
+// async function handleRandom() {
+//   hidePokemonImageForLoadingAnimation();
+//   showGifLoadingAnimation();
+//   spritePosition = 0;
+//   data = await getPokemon(randomIntFromInterval());
+//   setTimeout(() => displayPokemon(), 2110);
+//   setTimeout(() => hideGifLoadingAnimation(), 2110);
+//   setTimeout(() => showPokemonImageForLoadingAnimation(), 2110);
+// }
 
 async function handleForwardButton() {
   if (!pokeId) {

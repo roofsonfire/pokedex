@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  searchInput = document.getElementById("input");
-  searchButton = document.getElementById("primary_screen_under_left_button");
+  // searchInput = document.getElementById("input");
+  // searchButton = document.getElementById("primary_screen_under_left_button");
   refreshButton = document.getElementById("primary_screen_under_right_button");
   helpButton = document.getElementById("main_light_blue_button");
   image = document.getElementById("pokeImg");
@@ -44,33 +44,33 @@ document.addEventListener("DOMContentLoaded", function () {
   soundIcon = document.getElementById("soundIcon");
   volume = new Tone.Volume(0).toDestination();
   synth = new Tone.DuoSynth().connect(volume);
-  searchButton.onmousedown = async e => {
-    if (helpMode) {
-      return;
-    } else {
-      synth.triggerAttackRelease("C8", "60n", "+0.01");
-      dataButtons.forEach(button => {
-        button.classList.remove("pressed");
-      });
-      dataButtonOne.classList.add("pressed");
-      await handleSearchButton(e);
-    }
-  };
-  searchButton.onmouseover = e => {
-    if (helpMode) {
-      nameTitle.innerHTML = `<p>Search button</p>`;
-    }
-  };
-  searchButton.onmouseout = e => {
-    if (helpMode) {
-      nameTitle.innerHTML = `<p>Hover over buttons for help</p>`;
-    }
-  };
-  searchInput.onkeydown = e => {
-    if (e.keyCode === 13) {
-      searchButton.onmousedown();
-    }
-  };
+  // searchButton.onmousedown = async e => {
+  //   if (helpMode) {
+  //     return;
+  //   } else {
+  //     synth.triggerAttackRelease("C8", "60n", "+0.01");
+  //     dataButtons.forEach(button => {
+  //       button.classList.remove("pressed");
+  //     });
+  //     dataButtonOne.classList.add("pressed");
+  //     await handleSearchButton(e);
+  //   }
+  // };
+  // searchButton.onmouseover = e => {
+  //   if (helpMode) {
+  //     nameTitle.innerHTML = `<p>Search button</p>`;
+  //   }
+  // };
+  // searchButton.onmouseout = e => {
+  //   if (helpMode) {
+  //     nameTitle.innerHTML = `<p>Hover over buttons for help</p>`;
+  //   }
+  // };
+  // searchInput.onkeydown = e => {
+  //   if (e.keyCode === 13) {
+  //     searchButton.onmousedown();
+  //   }
+  // };
   refreshButton.onclick = e => {
     if (helpMode) {
       return;
@@ -244,28 +244,28 @@ document.addEventListener("DOMContentLoaded", function () {
     speaker.classList.remove("shake");
   };
 
-  mainBigLed.onmousedown = async () => {
-    if (helpMode) {
-      return;
-    } else {
-      synth.triggerAttackRelease("A6", "60n", "+0.01");
-      dataButtons.forEach(button => {
-        button.classList.remove("pressed");
-      });
-      dataButtonOne.classList.add("pressed");
-      await handleRandom();
-    }
-  };
-  mainBigLed.onmouseover = e => {
-    if (helpMode) {
-      nameTitle.innerHTML = `<p>Random pokémon</p>`;
-    }
-  };
-  mainBigLed.onmouseout = e => {
-    if (helpMode) {
-      nameTitle.innerHTML = ``;
-    }
-  };
+  // mainBigLed.onmousedown = async () => {
+  //   if (helpMode) {
+  //     return;
+  //   } else {
+  //     synth.triggerAttackRelease("A6", "60n", "+0.01");
+  //     dataButtons.forEach(button => {
+  //       button.classList.remove("pressed");
+  //     });
+  //     dataButtonOne.classList.add("pressed");
+  //     await handleRandom();
+  //   }
+  // };
+  // mainBigLed.onmouseover = e => {
+  //   if (helpMode) {
+  //     nameTitle.innerHTML = `<p>Random pokémon</p>`;
+  //   }
+  // };
+  // mainBigLed.onmouseout = e => {
+  //   if (helpMode) {
+  //     nameTitle.innerHTML = ``;
+  //   }
+  // };
 
   secondaryLeftArrow.onmousedown = () => {
     if (helpMode) {
