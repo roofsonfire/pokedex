@@ -90,12 +90,12 @@ export default {
       fill="#CCFFFE"
     />
     <foreignObject x="185" y="285" width="200" height="200">
-      <img
+      <!-- <img
         id="loadingGifAnimation"
         width="70%"
         src="assets\animation.gif"
         alt=""
-      />
+      /> -->
     </foreignObject>
     <foreignObject x="170" y="255" width="200" height="200">
       <img id="pokeImg" :src="image" alt="" />
