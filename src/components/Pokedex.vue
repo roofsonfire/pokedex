@@ -92,6 +92,12 @@ export default defineComponent({
       this.changeGender("female");
       this.changeTypes(data.types);
     },
+    backward() {
+      this.search(this.input - 1);
+    },
+    forward() {
+      this.search(this.input + 1);
+    },
     changeImgSrc(src) {
       this.image = src;
     },
