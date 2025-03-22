@@ -42,10 +42,12 @@ Una aplicación interactiva que permite buscar, explorar y visualizar informaci�
 ## Capturas de pantalla
 
 ### Pantalla principal
-![Pantalla principal](assets/screenshots/main_screen.png)
+![Pantalla principal](./assets/screenshots/main_screen.png)
 
 ### Modo de ayuda
-![Modo de ayuda](assets/screenshots/help_mode.png)
+![Modo de ayuda](./assets/screenshots/help_mode.png)
+
+> **Nota**: Asegúrate de que las imágenes `main_screen.png` y `help_mode.png` estén ubicadas en la carpeta `assets/screenshots`.
 
 ## Contribución
 
