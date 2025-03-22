@@ -66,3 +66,76 @@ const volume = new Tone.Volume(0).toDestination();
 const synth = new Tone.DuoSynth().connect(volume);
 
 let helpMode = false;
+
+// Iniciar el contexto de audio después de la primera interacción del usuario
+let audioInitialized = false;
+
+const initializeAudioContext = async () => {
+  if (!audioInitialized && Tone.context.state !== "running") {
+    await Tone.start();
+    console.log("AudioContext iniciado");
+    audioInitialized = true;
+  }
+};
+
+// Listener global para iniciar el AudioContext
+document.body.addEventListener("click", initializeAudioContext);
+document.body.addEventListener("keydown", initializeAudioContext);
+
+// Listener para el botón de mute
+muteButton.addEventListener("click", async () => {
+  await initializeAudioContext();
+  if (!volume.mute) {
+    soundIcon.classList.remove("hidden");
+    muteIcon.classList.add("hidden");
+    volume.mute = true;
+  } else {
+    soundIcon.classList.add("hidden");
+    muteIcon.classList.remove("hidden");
+    volume.mute = false;
+  }
+});
+
+// Evitar múltiples listeners en botones
+searchButton.replaceWith(searchButton.cloneNode(true));
+refreshButton.replaceWith(refreshButton.cloneNode(true));
+helpButton.replaceWith(helpButton.cloneNode(true));
+
+// Listener para el botón de búsqueda
+searchButton.addEventListener("click", () => {
+  console.log("Botón de búsqueda presionado");
+  // Lógica para manejar la búsqueda
+});
+
+// Listener para el botón de refrescar
+refreshButton.addEventListener("click", () => {
+  console.log("Botón de refrescar presionado");
+  // Lógica para refrescar la pantalla
+});
+
+// Listener para el botón de ayuda
+helpButton.addEventListener("click", () => {
+  console.log("Botón de ayuda presionado");
+  // Lógica para mostrar la ayuda
+});
+
+// Listeners para los botones de navegación (D-Pad)
+forwardButton.addEventListener("click", () => {
+  console.log("Botón de avanzar presionado");
+  // Lógica para avanzar
+});
+
+backwardButton.addEventListener("click", () => {
+  console.log("Botón de retroceder presionado");
+  // Lógica para retroceder
+});
+
+upButton.addEventListener("click", () => {
+  console.log("Botón de subir presionado");
+  // Lógica para subir
+});
+
+downButton.addEventListener("click", () => {
+  console.log("Botón de bajar presionado");
+  // Lógica para bajar
+});

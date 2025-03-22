@@ -1,16 +1,15 @@
 window.onload = async () => {
+  // Evitar múltiples listeners en botones
+  searchButton.replaceWith(searchButton.cloneNode(true));
+  refreshButton.replaceWith(refreshButton.cloneNode(true));
+  helpButton.replaceWith(helpButton.cloneNode(true));
+
   searchButton.onmousedown = async (e) => {
-    if (helpMode) {
-      return;
-    } else {
-      synth.triggerAttackRelease("C8", "60n", "+0.01");
-      dataButtons.forEach((button) => {
-        button.classList.remove("pressed");
-      });
-      dataButtonOne.classList.add("pressed");
-      await handleSearchButton(e);
-    }
+    if (helpMode) return;
+    synth.triggerAttackRelease("C8", "60n", "+0.01");
+    await handleSearchButton(e);
   };
+
   searchButton.onmouseover = (e) => {
     if (helpMode) {
       nameTitle.innerHTML = `<p>Search button</p>`;
@@ -26,19 +25,11 @@ window.onload = async () => {
       searchButton.onmousedown();
     }
   };
+
   refreshButton.onclick = (e) => {
-    if (helpMode) {
-      return;
-    } else {
-      synth.triggerAttackRelease("A2", "60n", "+0.01");
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-      nameTitle.innerHTML = `<p>Reseting Pokédex</p>`;
-      setInterval(() => {
-        nameTitle.innerHTML += `.`;
-      }, 500);
-    }
+    if (helpMode) return;
+    synth.triggerAttackRelease("A2", "60n", "+0.01");
+    window.location.reload();
   };
   refreshButton.onmouseover = (e) => {
     if (helpMode) {
@@ -74,13 +65,9 @@ window.onload = async () => {
   };
 
   forwardButtonClickableArea.onmousedown = async () => {
-    if (helpMode) {
-      return;
-    } else {
-      synth.triggerAttackRelease("E8", "60n", "+0.01");
-      dPad.classList.add("d_pad_pressed");
-      handleForwardButton();
-    }
+    if (helpMode) return;
+    synth.triggerAttackRelease("E8", "60n", "+0.01");
+    handleForwardButton();
   };
   forwardButtonClickableArea.onmouseover = (e) => {
     forwardButton.classList.add("clickable");
@@ -100,13 +87,9 @@ window.onload = async () => {
   };
 
   backwardButtonClickableArea.onmousedown = async () => {
-    if (helpMode) {
-      return;
-    } else {
-      synth.triggerAttackRelease("F8", "60n", "+0.01");
-      dPad.classList.add("d_pad_pressed");
-      handleBackwardButton();
-    }
+    if (helpMode) return;
+    synth.triggerAttackRelease("F8", "60n", "+0.01");
+    handleBackwardButton();
   };
   backwardButtonClickableArea.onmouseover = (e) => {
     backwardButton.classList.add("clickable");
@@ -261,11 +244,8 @@ window.onload = async () => {
   };
 
   muteButton.onmousedown = () => {
-    if (helpMode) {
-      return;
-    } else {
-      handleMuteButton();
-    }
+    if (helpMode) return;
+    handleMuteButton();
   };
   muteButton.onmouseover = (e) => {
     if (helpMode) {
